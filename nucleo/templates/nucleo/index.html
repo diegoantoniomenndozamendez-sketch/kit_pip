@@ -1,0 +1,29 @@
+<h2>kit de estudio</h2>
+
+{% for archivo in archivos %}
+    <div style="margin-bottom: 30px;">
+
+        <h3>{{ archivo.nombre }}</h3>
+
+        {% if archivo.tipo == "pdf" %}
+            <!-- Mostrar PDF -->
+            <embed src="{{ archivo.ruta }}" type="application/pdf" width="400" height="400">
+            <br>
+            <a href="{{ archivo.ruta }}" download>Descargar PDF</a>
+
+        {% elif archivo.tipo == "docx" %}
+            <!-- Descargar DOCX -->
+            <a href="{{ archivo.ruta }}" download>Descargar documento Word</a>
+
+        {% elif archivo.tipo == "imagen" %}
+            <!-- Mostrar imagen -->
+            <img src="{{ archivo.ruta }}" width="400" alt="imagen entregada">
+
+        {% elif archivo.tipo == "link" %}
+            <!-- Mostrar enlace externo -->
+            <a href="{{ archivo.ruta }}" target="_blank">Abrir enlace</a>
+
+        {% endif %}
+
+    </div>
+{% endfor %}
